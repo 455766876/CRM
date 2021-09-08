@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--组件扫描器-->
+    <!--用户的-->
+    <context:component-scan base-package="com.cw.crm.settings.web.controller" />
+    <!--市场活动的-->
+    <context:component-scan base-package="com.cw.crm.workbench.web.controller" />
+
+
+    <!--注解驱动-->
+    <mvc:annotation-driven />
+
+    <!--处理静态资源文件访问-->
+    <mvc:default-servlet-handler />
+
+    <!--声明拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/> <!--要拦截的地址-->
+            <mvc:exclude-mapping path="/settings/user/login.do"/> <!--不拦截的地址-->
+            <bean class="com.cw.crm.web.handler.MyHandlerInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+</beans>

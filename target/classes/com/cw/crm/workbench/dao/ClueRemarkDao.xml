@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cw.crm.workbench.dao.ClueRemarkDao">
+	<select id="showRemarkList" resultType="com.cw.crm.workbench.domain.ActivityRemark">
+		select * from tbl_clue_remark where clueId=#{id}
+	</select>
+
+	<update id="updateRemark">
+		update tbl_clue_remark
+		set
+			noteContent=#{noteContent},
+			editBy=#{editBy},
+			editFlag=#{editFlag},
+			editTime=#{editTime}
+		where id=#{id}
+	</update>
+
+	<insert id="saveRemark">
+		insert into tbl_clue_remark (id, noteContent, createBy, createTime, editFlag, clueId)
+        values (
+            #{id},
+            #{noteContent},
+            #{createBy},
+            #{createTime},
+            #{editFlag},
+            #{clueId}
+            )
+	</insert>
+
+	<delete id="deleteRemark">
+		delete from tbl_clue_remark where id=#{id}
+	</delete>
+
+	<select id="getListByClueId" resultType="com.cw.crm.workbench.domain.ClueRemark">
+		select * from tbl_clue_remark where clueId=#{clueId}
+	</select>
+
+	<delete id="deleteRemarkByClueId">
+		delete from tbl_clue_remark where clueId=#{clueId}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

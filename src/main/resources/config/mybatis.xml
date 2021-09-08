@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置日志-->
+ <!--       <settings>
+            <setting name="logImpl" value="STDOUT_LOGGING"/>
+        </settings>-->
+
+    <!--设置别名-->
+    <typeAliases>
+        <!--name是包名，类名就是别名-->
+        <package name="com.cw.crm.settings.domain" />
+        <package name="com.cw.crm.workbench.domain" />
+    </typeAliases>
+
+    <!--sql mapper(sql 映射文件)的位置-->
+    <mappers>
+        <!--mapper文件所在的包名-->
+        <package name="com.cw.crm.settings.dao" />
+        <package name="com.cw.crm.workbench.dao" />
+    </mappers>
+
+</configuration>
